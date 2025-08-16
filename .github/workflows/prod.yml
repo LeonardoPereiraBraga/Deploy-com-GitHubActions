@@ -35,4 +35,4 @@ jobs:
       - name: Pull image from docker hub
         run: docker pull kiriyobr/deploy_ghactions:latest
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name deploy_ghactions kiriyobr/deploy_ghactions
+        run: docker run -d -p 8080:8080 -e DATABASE_URL=${{secrets.DATABASE_URL}} --name deploy_ghactions kiriyobr/deploy_ghactions
