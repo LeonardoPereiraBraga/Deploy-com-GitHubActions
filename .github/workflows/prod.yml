@@ -5,6 +5,14 @@ on:
     branches: [main]
 
 jobs:
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull kiriyobr/deploy_ghactions:latest
+      - name: Run docker container
+        run: docker run -d -p 8080:8080 --name deploy_ghactions kiriyobr/deploy_ghactions
   build:
     runs-on: ubuntu-latest
     steps:
