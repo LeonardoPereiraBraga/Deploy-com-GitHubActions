@@ -16,12 +16,12 @@ public class BooksController {
     @Autowired
     private BooksRepository booksRepository;
 
-    @GetMapping("/")
+    @GetMapping
     public List<Book> list() {
         return this.booksRepository.findAll();   
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Book create(@RequestBody Book book) {
         return this.booksRepository.save(book);    }
 
